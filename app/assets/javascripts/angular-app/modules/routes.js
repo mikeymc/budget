@@ -3,6 +3,6 @@ budget.config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider.state('/', {
     url: '/',
-    templateUrl: 'test.html'
+    templateUrl: 'budget.html'
   });
 });
