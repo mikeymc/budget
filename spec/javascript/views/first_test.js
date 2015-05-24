@@ -1,5 +1,7 @@
-describe('the first test', function() {
-  it('works', function() {
-    expect(5).toEqual(5);
+describe('the main page', function() {
+  it('has a button that says Create New Budget', function() {
+    this.injectDependencies('renderTemplate');
+    view = this.renderTemplate('test.html');
+    expect(view).toContainText('hi michael');
   });
 });

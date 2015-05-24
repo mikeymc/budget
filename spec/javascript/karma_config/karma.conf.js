@@ -5,11 +5,11 @@ var configureKarma = function (configuration) {
     basePath: '../../../',
     browsers: ['PhantomJS'],
     preprocessors: {
-      'app/assets/javascripts/angular-app/templates/**/*.html': ['ng-html2js']
+      'app/assets/javascripts/angular-app/templates/*.html': ['ng-html2js']
     },
     ngHtml2JsPreprocessor: {
       moduleName: 'templates',
-      stripPrefix: 'app/assets/javascripts/angular-app/templates'
+      stripPrefix: 'app/assets/javascripts/angular-app/templates/'
     },
     files: karmaFiles.files,
     exclude: [],

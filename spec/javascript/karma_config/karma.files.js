@@ -3,7 +3,9 @@ var KarmaFiles = function() {
     'vendor/assets/bower_components/jquery/dist/jquery.js',
     'vendor/assets/bower_components/jasmine-jquery/lib/jasmine-jquery.js',
     'vendor/assets/bower_components/angular/angular.js',
-    'vendor/assets/bower_components/angular-ui-router/release/angular-ui-router.js'
+    'vendor/assets/bower_components/angular-mocks/angular-mocks.js',
+    'vendor/assets/bower_components/angular-ui-router/release/angular-ui-router.js',
+    'vendor/assets/bower_components/underscore/underscore.js'
   ];
 
   var application_files = [
@@ -12,7 +14,8 @@ var KarmaFiles = function() {
   ];
 
   var test_files = [
-    'spec/javascript/views/*.js'
+    'spec/javascript/helpers/*',
+    'spec/javascript/views/*'
   ];
 
   this.files = dependencies.concat(application_files, test_files);
