@@ -5,10 +5,13 @@ gem 'rails-api'
 gem 'sqlite3'
 gem 'sass-rails', '~> 5.0'
 gem 'jbuilder', '~> 2.0'
+gem 'turbolinks', '~> 2.0'
+gem 'angular-rails-templates', '~> 0.2.0'
 
 group :development, :test do
   gem 'capybara'
   gem 'rspec'
+  gem 'rspec-rails'
   gem 'poltergeist'
   gem 'selenium-webdriver'
 end

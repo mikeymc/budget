@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "bower": ">=1.4.0",
+    "ng-html2js": "~2.0.0"
+  }
+}
