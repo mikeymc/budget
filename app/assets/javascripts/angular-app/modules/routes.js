@@ -5,4 +5,8 @@ budget.config(function($stateProvider, $urlRouterProvider) {
     url: '/',
     templateUrl: 'budget.html'
   });
+
+  $stateProvider.state('income', {
+    templateUrl: 'income.html'
+  });
 });

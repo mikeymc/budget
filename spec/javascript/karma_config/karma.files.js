@@ -9,8 +9,9 @@ var KarmaFiles = function() {
   ];
 
   var application_files = [
+    'app/assets/javascripts/angular-app/modules/*',
     'app/assets/javascripts/angular-app/templates/*',
-    'app/assets/javascripts/angular-app/modules/*'
+    'app/assets/javascripts/angular-app/controllers/*'
   ];
 
   var test_files = [
