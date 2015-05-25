@@ -2,7 +2,7 @@ describe('the main page', function() {
   var view;
   beforeEach(function() {
     this.injectDependencies('renderTemplate', '$state');
-    view = this.renderTemplate('budget.html');
+    view = this.renderTemplate('budget.html', this.$scope);
   });
 
   it('shows a Create New Budget button', function() {

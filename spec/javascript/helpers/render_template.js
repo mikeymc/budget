@@ -1,4 +1,4 @@
-budget.service('renderTemplate', function($templateCache, $compile, $rootScope) {
+budget.service('renderTemplate', function($templateCache, $compile) {
   function isTemplateFile(template) {
     return _.last(template, 5).join('') === '.html';
   }
@@ -12,9 +12,6 @@ budget.service('renderTemplate', function($templateCache, $compile, $rootScope) 
   }
 
   return function renderTemplate(template, $scope) {
-    if ($scope === undefined) {
-      $scope = $rootScope.$new();
-    }
     var templateToCompile = isTemplateFile(template) ? $templateCache.get(template) : template;
 
     return compileTemplate(templateToCompile, $scope);

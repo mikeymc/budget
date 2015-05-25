@@ -3,10 +3,11 @@ beforeEach(function() {
   this.injectDependencies = function() {
     var dependencies = _.toArray(arguments);
 
-    return inject(function($injector) {
+    return inject(function($injector, $rootScope) {
       _.each(dependencies, function(dependency) {
         self[dependency] = $injector.get(dependency);
       });
+      self.$scope = $rootScope.$new();
     });
   };
 });
