@@ -14,4 +14,8 @@ describe('the income section', function() {
   it('has an input area for federal allowances', function() {
     expect(view.find("form input[name='federal_allowances']")).toExist();
   });
+
+  it('has a button labeled "Save"', function() {
+    expect(view.find('button:contains("Save")')).toExist();
+  });
 });
