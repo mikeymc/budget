@@ -1,7 +1,7 @@
 describe('the income section', function() {
   var view, self;
   beforeEach(function() {
-    this.injectDependencies('renderTemplate');
+    this.injectDependencies('renderTemplate', 'IncomeRepository');
     view = this.renderTemplate('income.html', this.$scope);
     self = this;
   });
@@ -17,5 +17,14 @@ describe('the income section', function() {
 
   it('has a button labeled "Save"', function() {
     expect(view.find('button:contains("Save")')).toExist();
+  });
+
+  describe('clicking "Save"', function() {
+    it('calls the income repository', function() {
+      spyOn(this.IncomeRepository, 'create');
+      view.find('button:contains("Save")').click();
+      this.$scope.$digest();
+      expect(this.IncomeRepository.create).toHaveBeenCalled();
+    });
   });
 });

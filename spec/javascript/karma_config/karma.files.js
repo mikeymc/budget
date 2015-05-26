@@ -12,6 +12,7 @@ var KarmaFiles = function() {
     'app/assets/javascripts/angular-app/templates/*.html',
     'app/assets/javascripts/angular-app/modules/module.js',
     'app/assets/javascripts/angular-app/modules/routes.js',
+    'app/assets/javascripts/angular-app/repositories/*',
     'app/assets/javascripts/angular-app/controllers/*'
   ];
 
