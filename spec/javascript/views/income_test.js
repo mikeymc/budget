@@ -1,7 +1,7 @@
 describe('the income section', function() {
   var view, self;
   beforeEach(function() {
-    this.injectDependencies('renderTemplate', 'IncomeRepository');
+    this.injectDependencies('renderTemplate', 'IncomeRepository', 'Form', 'Http');
     view = this.renderTemplate('income.html', this.$scope);
     self = this;
   });
@@ -21,10 +21,21 @@ describe('the income section', function() {
 
   describe('clicking "Save"', function() {
     it('calls the income repository', function() {
-      spyOn(this.IncomeRepository, 'create');
+      spyOn(self.IncomeRepository, 'create');
       view.find('button:contains("Save")').click();
-      this.$scope.$digest();
       expect(this.IncomeRepository.create).toHaveBeenCalled();
+    });
+
+    it('sends the annual income to the create function', function() {
+      spyOn(self.IncomeRepository, 'create');
+      self.Form.fill(view, 'annual_salary', 'annual-salary');
+      self.Form.fill(view, 'federal_allowances', 'federal-allowances');
+      view.find('button:contains("Save")').click();
+      var expectedInput = {
+        annual_salary: 'annual-salary',
+        federal_allowances: 'federal-allowances'
+      };
+      expect(this.IncomeRepository.create).toHaveBeenCalledWith(expectedInput);
     });
   });
 });

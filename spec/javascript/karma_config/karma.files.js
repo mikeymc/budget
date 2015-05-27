@@ -22,6 +22,8 @@ var KarmaFiles = function() {
     'spec/javascript/helpers/render_template.js',
     'spec/javascript/helpers/find.js',
     'spec/javascript/helpers/form.js',
+    'spec/javascript/helpers/http.js',
+    'spec/javascript/repositories/*',
     'spec/javascript/views/*'
   ];
 

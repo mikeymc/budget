@@ -1,7 +1,7 @@
-budget.service('IncomeRepository', function() {
+budget.service('IncomeRepository', function($http) {
   return {
-    create: function() {
-      console.log('calling create!');
+    create: function(body) {
+      return $http.post('/income', body);
     }
   };
 });
