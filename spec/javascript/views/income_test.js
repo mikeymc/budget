@@ -1,7 +1,7 @@
 describe('the income section', function() {
   var view, self;
   beforeEach(function() {
-    this.injectDependencies('renderTemplate', 'IncomeRepository', 'Form', 'Http');
+    this.injectDependencies('renderTemplate', 'IncomeRepository', 'Form');
     view = this.renderTemplate('income.html', this.$scope);
     self = this;
   });

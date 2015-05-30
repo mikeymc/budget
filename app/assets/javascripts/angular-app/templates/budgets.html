@@ -1,0 +1,8 @@
+<div ng-controller="BudgetsController">
+  <button name="new_budget_button" ng-click="startNewBudget();">Create New Budget</button>
+  <div>Open Budgets</div>
+  <div class="open_budget_list_item" name="{{budget.id}}" ng-repeat="budget in budgets" ng-click="goToBudget(budget.id)">
+    <div>{{budget.name}}</div>
+  </div>
+</div>
+
