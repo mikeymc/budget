@@ -1,6 +1,4 @@
-ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../../../config/environment', __FILE__)
-
+require_relative '../../spec_helper_root'
 require 'pry'
 require 'capybara/rails'
 require 'capybara/rspec'
@@ -13,19 +11,4 @@ Capybara.app_host = 'http://localhost:8888'
 
 RSpec.configure do |configuration|
   configuration.include Capybara::DSL
-  configuration.before(:suite) do
-    DatabaseCleaner.clean_with(:truncation)
-  end
-  configuration.before(:each) do
-    DatabaseCleaner.strategy = :transaction
-  end
-  configuration.before(:each, :js => true) do
-    DatabaseCleaner.strategy = :truncation
-  end
-  configuration.before(:each) do
-    DatabaseCleaner.start
-  end
-  configuration.after(:each) do
-    DatabaseCleaner.clean
-  end
 end
