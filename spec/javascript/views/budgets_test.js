@@ -42,10 +42,14 @@ describe('The Budgets Page', function() {
     });
 
     it('has three items when the list is size three', function() {
-      var budgets = {budgets: ['one', 'two', 'three']};
+      var budgets = {budgets: [
+        {id:'123', name:'budget-one'},
+        {id:'456', name:'budget-two'},
+        {id:'789', name:'budget-three'}
+      ]};
       budgetSummaryRepositorySpy.and.returnValue(self.Http.succeedToMakeRequest(budgets));
       view = render(self.$scope);
-      expect(view.find('.open_budget_list_item').length).toBe(3);
+      expect(view.find('.budget').length).toBe(3);
     });
 
     it('shows the name of each budget in each item', function() {
@@ -55,8 +59,8 @@ describe('The Budgets Page', function() {
       ]};
       budgetSummaryRepositorySpy.and.returnValue(self.Http.succeedToMakeRequest(budgets));
       view = render(self.$scope);
-      expect(view.find('.open_budget_list_item')[0]).toContainText('budget-one');
-      expect(view.find('.open_budget_list_item')[1]).toContainText('budget-two');
+      expect(view.find('.budget')[0]).toContainText('budget-one');
+      expect(view.find('.budget')[1]).toContainText('budget-two');
     });
 
     it('sets the name attribute to the id of the budget', function() {
@@ -66,8 +70,8 @@ describe('The Budgets Page', function() {
       ]};
       budgetSummaryRepositorySpy.and.returnValue(self.Http.succeedToMakeRequest(budgets));
       view = render(self.$scope);
-      expect(view.find('.open_budget_list_item:nth(0)').attr('name')).toEqual('123');
-      expect(view.find('.open_budget_list_item:nth(1)').attr('name')).toEqual('456');
+      expect(view.find('.budget:nth(0)').attr('name')).toEqual('123');
+      expect(view.find('.budget:nth(1)').attr('name')).toEqual('456');
     });
   });
 

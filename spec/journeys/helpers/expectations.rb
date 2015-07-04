@@ -11,7 +11,7 @@ class Expectations
 
   def to_see_no_existing_budgets
     puts 'Seeing that no budgets are currently open...'
-    expect(page).not_to have_css('.open_budget_list_item')
+    expect(page).not_to have_css('.budget')
   end
 
   def to_see_new_budget_page
@@ -19,5 +19,16 @@ class Expectations
     expect(page).to have_content 'New Budget'
     expect(page).to have_content 'Choose a name for your new budget'
     expect(page).to have_button 'Create'
+  end
+
+  def to_see_the_new_budget
+    puts 'Looking for the new budget on the budgets page...'
+    expect(page).to have_content 'Test Budget'
+  end
+
+  def to_see_budget_overview_page
+    puts 'Looking at the Test Budget overview page...'
+    expect(page).to have_content 'Income'
+    expect(page).to have_content 'Expenses'
   end
 end

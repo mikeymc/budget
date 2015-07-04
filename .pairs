@@ -1,0 +1,8 @@
+pairs:
+  mm: Mikey McCormack; mmccormack
+
+email:
+  prefix: pair
+  domain: pivotal.io
+
+global: true

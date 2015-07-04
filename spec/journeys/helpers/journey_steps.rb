@@ -18,4 +18,9 @@ class JourneySteps
     fill_in 'budget_name', :with => 'Test Budget'
     find_button('Create').click
   end
+
+  def go_to_budget
+    puts 'Going to Test Budget...'
+    find('.budget', :text => 'Test Budget').click
+  end
 end

@@ -1,10 +1,15 @@
-require 'capybara'
-require 'capybara/poltergeist'
+ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../../../../config/environment', __FILE__)
 
-Capybara.run_server = false
-Capybara.default_driver = :poltergeist
-Capybara.app_host = 'http://localhost:3000'
-Capybara.default_wait_time = 10
+require 'pry'
+require 'capybara/rails'
+require 'capybara/rspec'
+require 'selenium-webdriver'
+
+Capybara.run_server = true
+Capybara.server_port = 8888
+Capybara.default_driver = :selenium #:poltergeist
+Capybara.app_host = 'http://localhost:8888'
 
 RSpec.configure do |configuration|
   configuration.include Capybara::DSL
