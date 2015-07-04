@@ -13,4 +13,19 @@ Capybara.app_host = 'http://localhost:8888'
 
 RSpec.configure do |configuration|
   configuration.include Capybara::DSL
+  configuration.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+  configuration.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+  configuration.before(:each, :js => true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+  configuration.before(:each) do
+    DatabaseCleaner.start
+  end
+  configuration.after(:each) do
+    DatabaseCleaner.clean
+  end
 end

@@ -1,5 +1,6 @@
 require_relative 'js'
 require_relative 'api'
+require_relative 'journeys'
 
 module CLI
   class Main < Thor
@@ -9,11 +10,14 @@ module CLI
     desc 'api', 'Api subcommands'
     subcommand 'api', CLI::Api
 
+    desc 'journeys', 'Journey test subcommands'
+    subcommand 'journeys', CLI::Journeys
+
     desc 'test', 'Run all tests'
     def test
       system 'budget js test'
       system 'budget api test'
-      system 'rspec ./spec/journeys/*_spec.rb'
+      system 'budget journeys test'
     end
   end
 end
