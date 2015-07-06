@@ -32,8 +32,8 @@ class Expectations
     expect(page).to have_content 'Expenses'
   end
 
-  def to_see_budget
-    puts 'Looking at budget...'
+  def to_see_income_section
+    puts 'Looking at income section...'
     expect(page.find_field('gross_annual_salary').value).to eq '100000'
   end
 end
