@@ -2,7 +2,7 @@ describe('The Budgets Page', function() {
   var view, self, budgetSummaryRepositorySpy, budgets;
 
   beforeEach(function() {
-    this.injectDependencies('renderTemplate', 'Form', '$location', 'Http', 'BudgetSummaryRepository', '$state');
+    this.injectDependencies('$scope', 'renderTemplate', 'Form', '$location', 'Http', 'BudgetSummaryRepository', '$state');
     budgetSummaryRepositorySpy = spyOn(this.BudgetSummaryRepository, 'all');
     budgetSummaryRepositorySpy.and.returnValue(this.Http.succeedToMakeRequest([]));
     self = this;

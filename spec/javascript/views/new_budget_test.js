@@ -2,7 +2,7 @@ describe('New Budget Page', function() {
   var view, self;
 
   beforeEach(function() {
-    this.injectDependencies('renderTemplate', 'Form', 'BudgetRepository', 'Http', '$state');
+    this.injectDependencies('$scope', 'renderTemplate', 'Form', 'BudgetRepository', 'Http', '$state');
     view = this.renderTemplate('new_budget.html', this.$scope);
     self = this;
   });

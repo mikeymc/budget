@@ -7,7 +7,6 @@ beforeEach(function() {
       _.each(dependencies, function(dependency) {
         self[dependency] = $injector.get(dependency);
       });
-      self.$scope = $rootScope.$new();
     });
   };
 });

@@ -2,7 +2,7 @@ describe('The Budget Page', function() {
   var view, budget;
 
   beforeEach(function() {
-    this.injectDependencies('renderTemplate', 'Form', 'BudgetRepository', 'IncomeRepository', 'stub', 'Http', '$stateParams');
+    this.injectDependencies('$scope', 'renderTemplate', 'Form', 'BudgetRepository', 'IncomeRepository', 'stub', 'Http', '$stateParams');
     var budget = {financial_budget: {id: 1, name: 'my-budget', income: {gross_annual_salary: '123456.78'}}};
     this.stub(this.BudgetRepository, 'get').withParam('budget-id').andReturn(this.Http.succeedToMakeRequest(budget));
     this.$stateParams.budgetId = 'budget-id';
