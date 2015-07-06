@@ -6,20 +6,17 @@ describe('The Budget Page', function() {
     var budget = {financial_budget: {id: 1, name: 'my-budget', income: {gross_annual_salary: '123456.78'}}};
     this.stub(this.BudgetRepository, 'get').withParam('budget-id').andReturn(this.Http.succeedToMakeRequest(budget));
     this.$stateParams.budgetId = 'budget-id';
+    view = this.renderTemplate('budget.html', this.$scope);
   });
 
-  xdescribe('setting up the view', function() {
+  describe('setting up the view', function() {
     it('fetches the budget from the server', function() {
-      view = this.renderTemplate('budget.html', this.$scope);
-
-      console.log(view);
-      expect(view).toContainText('123456.78');
+      expect(view.find('input[name="gross_annual_salary"]').val()).toEqual('123456.78');
     });
   });
 
   describe('the Income section', function() {
     it('has a header that says Income', function() {
-      view = this.renderTemplate('budget.html', this.$scope);
       expect(view).toContainText('Income');
     });
 
