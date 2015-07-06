@@ -1,14 +1,21 @@
 describe('the Budget Repository', function() {
-  var self;
-
   beforeEach(function() {
     this.injectDependencies('BudgetRepository', '$httpBackend');
-    self = this;
   });
 
-  it('make an HTTP POST to /budgets with its given data', function() {
-    self.$httpBackend.expectPOST('/api/budgets', 'some-stuff').respond(200);
-    self.BudgetRepository.create('some-stuff');
-    self.$httpBackend.flush();
+  describe('#create', function() {
+    it('make an HTTP POST to /api/budgets with its given data', function() {
+      this.$httpBackend.expectPOST('/api/budgets', 'some-stuff').respond(200);
+      this.BudgetRepository.create('some-stuff');
+      this.$httpBackend.flush();
+    });
+  });
+
+  describe('#get', function() {
+    it('makes an HTTP GET to /api/budgets/budget-id', function() {
+      this.$httpBackend.expectGET('/api/budgets/budget-id').respond(200);
+      this.BudgetRepository.get('budget-id');
+      this.$httpBackend.flush();
+    });
   });
 });

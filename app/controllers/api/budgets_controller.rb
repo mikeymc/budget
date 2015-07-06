@@ -9,4 +9,13 @@ class Api::BudgetsController < ApplicationController
   def create
     render :json => FinancialBudget.create(:name => params['name'])
   end
+
+  def show
+    begin
+      @budget = FinancialBudget.find(params['id'])
+      render json: @budget, serializer: FinancialBudgetSerializer
+    rescue
+      render json: {}, status: 404
+    end
+  end
 end

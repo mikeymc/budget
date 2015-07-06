@@ -16,5 +16,9 @@ describe 'when a user makes a budget' do
     then_expect.to_see_the_new_budget
     now.go_to_budget
     then_expect.to_see_budget_overview_page
+    now.add_income_information
+    now.refresh
+    now.go_to_budget
+    then_expect.to_see_budget
   end
 end

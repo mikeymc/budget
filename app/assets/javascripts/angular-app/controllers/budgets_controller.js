@@ -1,6 +1,6 @@
 budget.controller('BudgetsController', function($scope, $state, BudgetSummaryRepository) {
-  $scope.goToBudget = function(id) {
-    $state.go('budget', {id: id});
+  $scope.goToBudget = function(budgetId) {
+    $state.go('budget', {budgetId: budgetId});
   };
 
   $scope.startNewBudget = function() {

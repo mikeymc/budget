@@ -18,11 +18,7 @@ var KarmaFiles = function() {
 
   var test_files = [
     'spec/javascript/helpers/inject_dependencies.js',
-    'spec/javascript/helpers/register_application.js',
-    'spec/javascript/helpers/render_template.js',
-    'spec/javascript/helpers/find.js',
-    'spec/javascript/helpers/form.js',
-    'spec/javascript/helpers/http.js',
+    'spec/javascript/helpers/*.js',
     'spec/javascript/repositories/*',
     'spec/javascript/views/*'
   ];

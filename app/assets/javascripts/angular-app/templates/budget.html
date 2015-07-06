@@ -1,4 +1,10 @@
-<div>
-  <div>Income</div>
+<div ng-controller="BudgetController">
+  <div>
+    Income
+    <form>
+      Gross Annual Salary: <input id="gross_annual_salary" name="gross_annual_salary" ng-model="budget.income.gross_annual_salary" type="number"/>
+      <input type="button" name="save_button" value="Save" ng-click="save();" />
+    </form>
+  </div>
   <div>Expenses</div>
 </div>

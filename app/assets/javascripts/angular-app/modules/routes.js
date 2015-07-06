@@ -7,7 +7,7 @@ budget.config(function($stateProvider, $urlRouterProvider) {
   });
 
   $stateProvider.state('budget', {
-    url: '/budgets/:id',
+    url: '/budgets/:budgetId',
     templateUrl: 'budget.html'
   });
 

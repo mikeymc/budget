@@ -1,7 +1,8 @@
 budget.service('IncomeRepository', function($http) {
   return {
-    create: function(body) {
-      return $http.post('/income', body);
+    save: function(budgetId, data) {
+      var url = '/api/budgets/' + budgetId + '/income';
+      return $http.post(url, data);
     }
   };
 });
