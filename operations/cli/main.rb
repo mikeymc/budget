@@ -1,4 +1,5 @@
 require_relative 'js'
+require_relative 'db'
 require_relative 'api'
 require_relative 'journeys'
 
@@ -9,6 +10,9 @@ module CLI
 
     desc 'api', 'Api subcommands'
     subcommand 'api', CLI::Api
+
+    desc 'db', 'Database subcommands'
+    subcommand 'db', CLI::Db
 
     desc 'journeys', 'Journey test subcommands'
     subcommand 'journeys', CLI::Journeys
