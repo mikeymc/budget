@@ -2,9 +2,6 @@
 
 $thor_runner = false
 
-new_path = ENV['PATH']
-ENV['PATH'] = "./node_nodules/.bin/:#{new_path}"
-
 require 'thor'
 require_relative 'operations/cli/main.rb'
 

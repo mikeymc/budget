@@ -1,9 +1,0 @@
-<div class="well" ng-controller="BudgetsController">
-  <div class="panel panel-primary">
-    <div class="panel-heading">Open Budgets</div>
-    <div class="budget list-group" name="{{budget.id}}" ng-repeat="budget in budgets" ng-click="goToBudget(budget.id)">
-      <div class="list-group-item">{{budget.name}}</div>
-    </div>
-  </div>
-  <button class="btn btn-primary" name="new_budget_button" ng-click="startNewBudget();">Create New Budget</button>
-</div>

@@ -1,4 +1,5 @@
 //= require jquery/dist/jquery.js
+//= require bootstrap-sprockets
 //= require angular/angular.js
 //= require angular-ui-router/release/angular-ui-router.js
 //= require turbolinks

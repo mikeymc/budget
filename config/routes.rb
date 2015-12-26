@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  root 'budgets#index'
+  root 'budget#index'
 
   namespace :api, :defaults => {:format => :json} do
-    resources :budgets do
-      resource :income
-    end
+    resources :budgets
   end
 end

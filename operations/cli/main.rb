@@ -23,5 +23,12 @@ module CLI
       system 'budget api test'
       system 'budget journeys test'
     end
+  
+    desc 'install', 'Install dependencies'
+    def install
+      system 'bundle install'
+      system 'npm install'
+      system 'bower install'
+    end
   end
 end
