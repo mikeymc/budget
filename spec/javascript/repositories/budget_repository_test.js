@@ -3,10 +3,10 @@ describe('the Budget Repository', function() {
     this.injectDependencies('BudgetRepository', '$httpBackend');
   });
 
-  describe('#create', function() {
+  describe('#update', function() {
     it('make an HTTP POST to /api/budgets with its given data', function() {
-      this.$httpBackend.expectPOST('/api/budgets', 'some-stuff').respond(200);
-      this.BudgetRepository.create('some-stuff');
+      this.$httpBackend.expectPUT('/api/budgets/1', {id: 1, other_stuff: 'other-stuff'}).respond(200);
+      this.BudgetRepository.update({id: 1, other_stuff: 'other-stuff'});
       this.$httpBackend.flush();
     });
   });

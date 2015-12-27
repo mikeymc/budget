@@ -1,8 +1,8 @@
 class CreateBudget < ActiveRecord::Migration
   def change
     create_table :budgets do |t|
-      t.decimal :gross_annual_salary
-      t.decimal :annual_savings_goal
+      t.column :gross_annual_salary, :decimal, :precision => 11, :scale => 2
+      t.column :annual_savings_goal, :decimal, :precision => 11,  :scale => 2
     end
   end
 end

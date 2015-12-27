@@ -1,18 +1,21 @@
 <div ng-controller="BudgetController">
-    <form>
-      Gross Annual Salary: <input id="gross_annual_salary" 
-                                  name="gross_annual_salary" 
-                                  ng-model="budget.gross_annual_salary" 
-                                  ng-init="budget.gross_annual_salary=0"
-                                  type="number"/>
-      Annual Savings Goal: <input id="annual_savings_goal" 
-                                  name="annual_savings_goal" 
-                                  ng-model="budget.annual_savings_goal" 
-                                  ng-init="budget.annual_savings_goal=0"
-                                  type="number"/>
-      <input type="button" 
-             name="save_button" 
-             value="Save" 
-             ng-click="save();" />
-    </form>
+  <form>
+    <div>
+      Gross Annual Salary: <input id="gross_annual_salary"
+                                  name="gross_annual_salary"
+                                  ng-model="budget.gross_annual_salary"
+                                  type="text"/>
+    </div>
+    <div>
+      Annual Savings Goal: <input id="annual_savings_goal"
+                                  name="annual_savings_goal"
+                                  ng-model="budget.annual_savings_goal"
+                                  type="text"/>
+    </div>
+    <div class="weekly_allowance">Weekly Allowance : <span>{{weekly_allowance | currency}}</span></div>
+    <input type="button"
+           name="save_button"
+           value="Save"
+           ng-click="save();"/>
+  </form>
 </div>

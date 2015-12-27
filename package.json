@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "bower": ">=1.4.0",
+    "jasmine-core": "*",
     "ng-html2js": "~2.0.0",
     "karma": "0.12.23",
     "karma-jasmine": "~0.3.1",

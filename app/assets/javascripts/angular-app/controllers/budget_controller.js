@@ -1,9 +1,34 @@
 budget.controller('BudgetController', function($scope, $stateParams, BudgetRepository, IncomeRepository) {
 
   $scope.save = function() {
-    IncomeRepository.save($scope.budget.id, $scope.budget.income);
+    BudgetRepository.update($scope.budget).success(function(response) {
+      $scope.budget = response.budget;
+    });
   };
 
-  BudgetRepository.get($stateParams.budgetId).success(function(returnedBudget) {
+
+  $scope.$watch('budget', function() {
+    var get_gross_annual_salary = function() {
+      if ($scope.budget && $scope.budget.gross_annual_salary) {
+        return $scope.budget.gross_annual_salary;
+      } else {
+        return 0;
+      }
+    };
+
+    var get_annual_savings_goal = function() {
+      if ($scope.budget && $scope.budget.annual_savings_goal) {
+        return $scope.budget.annual_savings_goal;
+      } else {
+        return 0;
+      }
+    };
+
+    $scope.weekly_allowance = (get_gross_annual_salary() - get_annual_savings_goal()) / 52;
   });
+
+  BudgetRepository.get($stateParams.budgetId)
+    .success(function(returnedBudget) {
+      $scope.budget = returnedBudget.budget;
+    });
 });

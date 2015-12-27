@@ -1,62 +1,51 @@
 require_relative 'helpers/spec_helper'
 
 describe 'budgets' do
-  describe '#index' do
-    it 'retrieves all of the budgets' do
-      FactoryGirl.create(:financial_budget, id: 1, name: 'first-budget', income: create(:income, id: 1))
-      FactoryGirl.create(:financial_budget, id: 2, name: 'second-budget', income: create(:income, id: 2))
-
-      get '/api/budgets'
-
-      expect(response.status).to be(200)
-      budgets = JSON.parse(response.body)['budgets']
-      expect(budgets.size).to be(2)
-      expect(budgets[0]['name']).to eq('first-budget')
-      expect(budgets[1]['name']).to eq('second-budget')
-    end
-  end
-
   describe '#show' do
     it 'fetches a single budget' do
-      FactoryGirl.create(:financial_budget, id: 1, name: 'first-budget', income: create(:income))
+      FactoryGirl.create(:budget, id: 1, gross_annual_salary: 100000.00, annual_savings_goal: 12345.67)
 
       get '/api/budgets/1'
 
       expect(response.status).to be(200)
-      budget = JSON.parse(response.body)['financial_budget']
+      budget = JSON.parse(response.body)['budget']
       expect(budget['id']).to eq 1
-      expect(budget['name']).to eq 'first-budget'
-      income = budget['income']
-      expect(income['gross_annual_salary']).to eq '100000.0'
+      expect(budget['gross_annual_salary']).to eq '100000.0'
+      expect(budget['annual_savings_goal']).to eq '12345.67'
     end
 
-    it '404s when no budget exists' do
+    it 'returns a 404 and an empty object when no budget exists' do
       get '/api/budgets/1'
 
       expect(response.status).to be(404)
     end
   end
 
-  describe '#create' do
+  describe '#update' do
     it 'saves a budget' do
-      get '/api/budgets'
+      FactoryGirl.create(:budget, id: 1, gross_annual_salary: 100000.00, annual_savings_goal: 12345.67)
 
-      body = JSON.parse(response.body)['budgets']
-      expect(body.size).to be(0)
+      get '/api/budgets/1'
 
-      post '/api/budgets', {:name => 'my-first-budget'}
+      budget = JSON.parse(response.body)['budget']
+      expect(budget['id']).to eq 1
+      expect(budget['gross_annual_salary']).to eq '100000.0'
+      expect(budget['annual_savings_goal']).to eq '12345.67'
+
+      put '/api/budgets/1', {:gross_annual_salary => 666.99, :annual_savings_goal => '12345.67'}
 
       expect(response.status).to be(200)
-      body = JSON.parse(response.body)['financial_budget']
-      expect(body['id']).to eq(1)
-      expect(body['name']).to eq('my-first-budget')
+      budget = JSON.parse(response.body)['budget']
+      expect(budget['id']).to eq(1)
+      expect(budget['gross_annual_salary']).to eq('666.99')
+      expect(budget['annual_savings_goal']).to eq('12345.67')
 
-      get '/api/budgets'
+      get '/api/budgets/1'
 
-      body = JSON.parse(response.body)['budgets']
-      expect(body.size).to be(1)
-      expect(body[0]['id']).to be(1)
-      expect(body[0]['name']).to eq('my-first-budget')
+      budget = JSON.parse(response.body)['budget']
+      expect(budget['id']).to eq 1
+      expect(budget['gross_annual_salary']).to eq '666.99'
+      expect(budget['annual_savings_goal']).to eq '12345.67'
     end
   end
 end
