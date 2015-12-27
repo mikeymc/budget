@@ -8,9 +8,9 @@ budget.controller('BudgetController', function($scope, $stateParams, BudgetRepos
 
 
   $scope.$watch('budget', function() {
-    var get_gross_annual_salary = function() {
-      if ($scope.budget && $scope.budget.gross_annual_salary) {
-        return $scope.budget.gross_annual_salary;
+    var get_net_annual_salary = function() {
+      if ($scope.budget && $scope.budget.net_annual_salary) {
+        return $scope.budget.net_annual_salary;
       } else {
         return 0;
       }
@@ -24,7 +24,7 @@ budget.controller('BudgetController', function($scope, $stateParams, BudgetRepos
       }
     };
 
-    $scope.weekly_allowance = (get_gross_annual_salary() - get_annual_savings_goal()) / 52;
+    $scope.weekly_allowance = (get_net_annual_salary() - get_annual_savings_goal()) / 52;
   });
 
   BudgetRepository.get($stateParams.budgetId)

@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151226040312) do
+ActiveRecord::Schema.define(version: 20151227203733) do
 
   create_table "budgets", force: :cascade do |t|
-    t.decimal "gross_annual_salary", precision: 11, scale: 2
+    t.decimal "net_annual_salary",   precision: 11, scale: 2
     t.decimal "annual_savings_goal", precision: 11, scale: 2
   end
 

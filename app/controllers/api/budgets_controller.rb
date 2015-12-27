@@ -14,7 +14,7 @@ class Api::BudgetsController < ApplicationController
     begin
       @budget = Budget.find(params['id'])
       @budget.annual_savings_goal = params['annual_savings_goal']
-      @budget.gross_annual_salary = params['gross_annual_salary']
+      @budget.net_annual_salary = params['net_annual_salary']
       @budget.save!
       render json: @budget, serializer: BudgetSerializer
     rescue

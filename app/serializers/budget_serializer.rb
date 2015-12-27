@@ -1,3 +1,3 @@
 class BudgetSerializer < ActiveModel::Serializer
-  attributes :id, :gross_annual_salary, :annual_savings_goal
+  attributes :id, :net_annual_salary, :annual_savings_goal
 end
