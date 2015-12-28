@@ -4,9 +4,17 @@ describe('the Budget Repository', function() {
   });
 
   describe('#update', function() {
-    it('make an HTTP POST to /api/budgets with its given data', function() {
+    it('make an HTTP PUT to /api/budgets with its given data', function() {
       this.$httpBackend.expectPUT('/api/budgets/1', {id: 1, other_stuff: 'other-stuff'}).respond(200);
       this.BudgetRepository.update({id: 1, other_stuff: 'other-stuff'});
+      this.$httpBackend.flush();
+    });
+  });
+
+  describe('#create', function() {
+    it('make an HTTP POST to /api/budgets with its given data', function() {
+      this.$httpBackend.expectPOST('/api/budgets', undefined).respond(200, {id: 1});
+      this.BudgetRepository.create();
       this.$httpBackend.flush();
     });
   });

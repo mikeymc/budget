@@ -20,6 +20,7 @@ var KarmaFiles = function() {
     'spec/javascript/helpers/inject_dependencies.js',
     'spec/javascript/helpers/*.js',
     'spec/javascript/repositories/*',
+    'spec/javascript/modules/*',
     'spec/javascript/views/*'
   ];
 

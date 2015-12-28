@@ -1,8 +1,13 @@
 budget.config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('budgets/1');
+  $urlRouterProvider.otherwise('/');
   
   $stateProvider.state('budget', {
     url: '/budgets/:budgetId',
     templateUrl: 'budget.html'
+  });
+
+  $stateProvider.state('/', {
+    url: '/',
+    templateUrl: 'new_budget.html'
   });
 });

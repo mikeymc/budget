@@ -48,4 +48,29 @@ describe 'budgets' do
       expect(budget['annual_savings_goal']).to eq '12345.67'
     end
   end
+
+  describe '#create' do
+    it 'makes a new budget with a fresh id' do
+      post '/api/budgets'
+
+      budget = JSON.parse(response.body)['budget']
+      expect(budget['id']).to eq 1
+      expect(budget['net_annual_salary']).to be_nil
+      expect(budget['annual_savings_goal']).to be_nil
+
+      post '/api/budgets'
+
+      budget = JSON.parse(response.body)['budget']
+      expect(budget['id']).to eq 2
+      expect(budget['net_annual_salary']).to be_nil
+      expect(budget['annual_savings_goal']).to be_nil
+
+      get '/api/budgets/1'
+
+      budget = JSON.parse(response.body)['budget']
+      expect(budget['id']).to eq 1
+      expect(budget['net_annual_salary']).to be_nil
+      expect(budget['annual_savings_goal']).to be_nil
+    end
+  end
 end

@@ -21,4 +21,14 @@ class Api::BudgetsController < ApplicationController
       render json: {}, status: 404
     end
   end
+
+  def create
+    begin
+      @budget = Budget.create()
+      @budget.save!
+      render json: @budget, serializer: BudgetSerializer
+    rescue
+      render json: {}, status: 404
+    end
+  end
 end

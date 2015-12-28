@@ -2,21 +2,20 @@ describe('The Budget Page', function() {
   var view;
 
   beforeEach(function() {
-    this.injectDependencies('$scope', 'renderTemplate', 'Form', 'BudgetRepository', 'IncomeRepository', 'stub', 'Http', '$stateParams');
+    this.injectDependencies('$scope', 'renderTemplate', 'Form', 'BudgetRepository', '$state', 'stub', 'Http', '$stateParams');
     this.$stateParams.budgetId = 'budget-id';
   });
 
   describe('when a budget is not found', function() {
     beforeEach(function() {
-      spyOn(this.BudgetRepository, 'get').and.returnValue(this.Http.succeedToMakeRequest({}));
+      spyOn(this.BudgetRepository, 'get').and.returnValue(this.Http.failToMakeRequest({}));
     });
 
-    it('defaults to zeros for the salary and savings goal', function() {
+    it('takes the user to the "Create Budget" page', function() {
+      spyOn(this.$state, 'go');
       view = this.renderTemplate('budget.html', this.$scope);
-      expect(view.find('#net_annual_salary').val()).toEqual('');
-      expect(view.find('#annual_savings_goal').val()).toEqual('');
-      expect(view.find('.weekly_allowance span').text().trim()).toEqual('$0.00');
-    })
+      expect(this.$state.go).toHaveBeenCalledWith('/');
+    });
   });
 
   describe('when a budget exists', function() {

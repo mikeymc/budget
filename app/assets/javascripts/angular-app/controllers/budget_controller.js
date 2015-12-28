@@ -1,11 +1,10 @@
-budget.controller('BudgetController', function($scope, $stateParams, BudgetRepository) {
+budget.controller('BudgetController', function($scope, $stateParams, $state, BudgetRepository) {
 
   $scope.save = function() {
     BudgetRepository.update($scope.budget).success(function(response) {
       $scope.budget = response.budget;
     });
   };
-
 
   $scope.$watch('budget', function() {
     var calculate_weekly_allowance = function() {
@@ -18,5 +17,9 @@ budget.controller('BudgetController', function($scope, $stateParams, BudgetRepos
   BudgetRepository.get($stateParams.budgetId)
     .success(function(returnedBudget) {
       $scope.budget = returnedBudget.budget;
+    })
+    .error(function() {
+      $state.go('/');
     });
+
 });
