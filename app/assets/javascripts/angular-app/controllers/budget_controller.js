@@ -1,4 +1,4 @@
-budget.controller('BudgetController', function($scope, $stateParams, BudgetRepository, IncomeRepository) {
+budget.controller('BudgetController', function($scope, $stateParams, BudgetRepository) {
 
   $scope.save = function() {
     BudgetRepository.update($scope.budget).success(function(response) {

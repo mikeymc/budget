@@ -10,13 +10,13 @@ gem 'jbuilder', '~> 2.0'
 gem 'turbolinks', '~> 2.0'
 gem 'angular-rails-templates', '~> 0.2.0'
 gem 'thor'
+gem 'byebug'
 
 group :development, :test do
   gem 'capybara'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'poltergeist'
-  gem 'pry'
 end
 
 group :test do
