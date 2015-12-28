@@ -12,6 +12,6 @@ describe 'when a user makes a budget' do
 
   it 'lets a user make budgets' do
     now.visit_app
-    then_expect.to_see_an_empty_budget
+    then_expect.to_see_a_budget
   end
 end

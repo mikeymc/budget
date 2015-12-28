@@ -8,23 +8,11 @@ budget.controller('BudgetController', function($scope, $stateParams, BudgetRepos
 
 
   $scope.$watch('budget', function() {
-    var get_net_annual_salary = function() {
-      if ($scope.budget && $scope.budget.net_annual_salary) {
-        return $scope.budget.net_annual_salary;
-      } else {
-        return 0;
-      }
+    var calculate_weekly_allowance = function() {
+      return ($scope.budget.net_annual_salary - $scope.budget.annual_savings_goal) / 52;
     };
 
-    var get_annual_savings_goal = function() {
-      if ($scope.budget && $scope.budget.annual_savings_goal) {
-        return $scope.budget.annual_savings_goal;
-      } else {
-        return 0;
-      }
-    };
-
-    $scope.weekly_allowance = (get_net_annual_salary() - get_annual_savings_goal()) / 52;
+    $scope.weekly_allowance = ($scope.budget) ? calculate_weekly_allowance() : '';
   });
 
   BudgetRepository.get($stateParams.budgetId)
