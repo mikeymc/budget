@@ -13,5 +13,8 @@ describe 'when a user makes a budget' do
   it 'lets a user make budgets' do
     now.visit_app
     then_expect.to_see_a_budget
+    now.update_income_and_savings_information
+    now.visit_app
+    then_expect.to_see_that_the_budget_has_been_updated
   end
 end
